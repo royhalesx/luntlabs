@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <algorithm>
 #include "data.h"
 
 
@@ -24,18 +25,18 @@ string line;
 //ofstream ofp(output); // ofp << string;
 
 int first;
-int it;
+int it = 0;
 
 bool found = false;
 
 vector<attributes> tests;
 
 
-string temp;
+string temp = "test";
 
 string getString(string input, int counter){
    first = input.find("\"");
-    if(first < 0 && counter == 0){
+    if(first < 0){
         return "failed";
     }
     input = input.substr(first+1);
@@ -45,6 +46,7 @@ string getString(string input, int counter){
         return place.substr(0, place.length()-1);
     }
    input = input.substr(0, input.find("\""));
+
    return input;
 }
 
@@ -99,12 +101,22 @@ getline(ifp, line);
 // Where code is currently messing up
 
     temp = getString(line, 0);
-    // cout << line.find("id") << endl;
-    if(temp == "id"&& tests.back().selector(stoi(getString(line, 1))) == 0){
+     temp.erase(std::remove_if(temp.begin(), temp.end(), ::isspace), temp.end());
+    //  cout << temp << endl;
+    if(temp == "id"){
         cout << temp << endl;
+        try {
+            if(tests.back().selector(stoi(getString(line, 1))) == 0){
+
+            }
+        }
+        catch (exception e){
+            
+        }
     cout << getString(line, 1) << endl;
     cout << "Success";
     found = true;
+    temp = " ";
 
       }
 

@@ -23,7 +23,7 @@ par.readFile("job6.txt");
 
 // }
 
-// par.printTest();
+par.printTest();
 
     return 0;
 }

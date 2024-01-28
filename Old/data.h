@@ -27,7 +27,7 @@ vector<int> rawValue;
 
 void setValue(string variable, const string& input){
 
-// cout << "Setting values" << endl;
+cout << "Setting values" << endl;
 
 if( strcmp(variable.c_str(), "flag")){
     flag.push_back(input);
@@ -189,7 +189,7 @@ return aspects.at(it).verify(value);
 }
 
 int selector(int id){
-// cout << "selecting" << endl;
+ cout << "selecting" << endl;
 
 switch(id){
 
