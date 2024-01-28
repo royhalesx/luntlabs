@@ -12,7 +12,7 @@ class Storage
     public List<string> Type { get; } = new List<string>();
 
     public List<string> Updated { get; } = new List<string>();
-    public List<int> RawValue { get; } = new List<int>();
+    public List<double> RawValue { get; } = new List<double>();
 
     public List<string> preFail { get; } = new List<string>();
     public List<string> performance { get; } = new List<string>();
@@ -71,7 +71,7 @@ class Storage
         }
         else if (variable == "rawValue")
         {
-            RawValue.Add(int.Parse(input));
+            RawValue.Add(double.Parse(input));
         }
         else {
         //  Console.WriteLine("bad");
@@ -188,11 +188,10 @@ class Attributes
     public string GetAll(string value, int count)
     {
         string holder = " ";
-             holder = holder + " " + aspects[0].GetValue(value, count);
 
         for (int i = 0; i < 12; i++)
         {
-            //  holder = holder + aspects[i].GetValue(value, count) + " ";
+             holder = holder + aspects[i].GetValue(value, count) + " ";
         }
         return holder;
     }
@@ -232,13 +231,13 @@ class Attributes
             171 => 2,
             172 => 3,
             173 => 4,
-            175 => 5,
-            178 => 6,
-            179 => 7,
-            181 => 8,
-            182 => 9,
-            184 => 10,
-            187 => 11,
+            174 => 5,
+            180 => 6,
+            183 => 7,
+            184 => 8,
+            187 => 9,
+            194 => 10,
+            196 => 11,
             _ => -1
         };
         if(it == -1){

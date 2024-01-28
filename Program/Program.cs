@@ -9,12 +9,14 @@ AssignData par = new AssignData();
 
 par.NewTest("driveA");
 
-par.ReadFile("job6.txt");
+// par.ReadFile("job6.json");
 
-// for (int i = 0; i < 2; i++){
-// par.readFile(job.insert(7,to_string(i )));
+// par.ReadFile("138/job" + 5 + ".json");
 
-// }
+ for (int i = 0; i < 13; i++){
+ par.ReadFile("138/job" + i + ".json");
+
+ }
 
  par.PrintTest();
 

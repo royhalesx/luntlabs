@@ -54,29 +54,31 @@ class AssignData
     public void PrintTest()
     {
         using (StreamWriter ofp = new StreamWriter("output.txt"))
-        {}
+        {
             //string holder = "";
             for (int i = 0; i < tests[it].Size(); i++)
             {
-                Console.WriteLine(tests[it].GetAll("value", i));
-                Console.WriteLine(tests[it].GetAll("worst", i));
-                Console.WriteLine(tests[it].GetAll("thresh", i));
-                Console.WriteLine(tests[it].GetAll("when_failed", i));
-                Console.WriteLine(tests[it].GetAll("flag", i));
+                ofp.WriteLine("Test " + i  +" \n");
+
+                ofp.WriteLine(tests[it].GetAll("value", i));
+                ofp.WriteLine(tests[it].GetAll("worst", i));
+                ofp.WriteLine(tests[it].GetAll("thresh", i));
+                ofp.WriteLine(tests[it].GetAll("when_failed", i));
+                ofp.WriteLine(tests[it].GetAll("flag", i));
                 
-                Console.WriteLine(tests[it].GetAll("string", i));
-                Console.WriteLine(tests[it].GetAll("prefailure", i));
+               ofp.WriteLine(tests[it].GetAll("string", i));
+               ofp.WriteLine(tests[it].GetAll("prefailure", i));
 
-                Console.WriteLine(tests[it].GetAll("updated_online", i));
-                Console.WriteLine(tests[it].GetAll("prefailure", i));
-                Console.WriteLine(tests[it].GetAll("performance", i));
-                Console.WriteLine(tests[it].GetAll("error_rate", i));
-                Console.WriteLine(tests[it].GetAll("event_count", i));
+               ofp.WriteLine(tests[it].GetAll("updated_online", i));
+                ofp.WriteLine(tests[it].GetAll("prefailure", i));
+                ofp.WriteLine(tests[it].GetAll("performance", i));
+                ofp.WriteLine(tests[it].GetAll("error_rate", i));
+                ofp.WriteLine(tests[it].GetAll("event_count", i));
 
 
-                Console.WriteLine(tests[it].GetAll("rawValue", i));
-
+                ofp.WriteLine(tests[it].GetAll("rawValue", i));
             }
+        }
         
     }
 
