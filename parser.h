@@ -96,17 +96,17 @@ getline(ifp, line);
     }
     else {found = false;}
 
-// && tests.back().selector(stoi(getString(line, 1))) == 0
+// Where code is currently messing up
 
     temp = getString(line, 0);
-    cout << line.find("id") << endl;
-if(temp == "id"){
-    cout << temp << endl;
-   // cout << getString(line, 1) << endl;
-// cout << "Success";
-// found = true;
+    // cout << line.find("id") << endl;
+    if(temp == "id"&& tests.back().selector(stoi(getString(line, 1))) == 0){
+        cout << temp << endl;
+    cout << getString(line, 1) << endl;
+    cout << "Success";
+    found = true;
 
-}
+      }
 
 }
 
