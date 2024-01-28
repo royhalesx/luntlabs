@@ -1,7 +1,5 @@
-Store all the vectors
+Graphing interface
 
-Make interface
+Make it able to go through folders of data and read all of them
 
-get this thing to work 100%
-
-Somethings wrong with the if statement checking for "id"
+Make it so that you can return all the values of one vector in one attribute
