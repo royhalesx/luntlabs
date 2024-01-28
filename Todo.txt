@@ -1,0 +1,5 @@
+Store all the vectors
+
+Make interface
+
+get this thing to work 100%
