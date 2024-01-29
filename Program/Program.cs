@@ -4,6 +4,8 @@
 
 string job = "138/job.json";
 
+//Add something so that we can say what drives to look through and make it so that it goes through all the folders and yeah
+
 // static void main(string[] args){
 AssignData par = new AssignData();
 
@@ -18,7 +20,7 @@ par.NewTest("driveA");
 
  }
 
- par.PrintTest();
+ par.PrintTest(); //This simply is printing the test so that we can see what the output looks like
 
  Console.WriteLine("done");
 

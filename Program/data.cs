@@ -1,6 +1,13 @@
 using System;
 using System.Collections.Generic;
 
+
+//store data on a file so we can get it without running this every single time
+
+//Return an entire vector for every test without passing the entire vector across classes
+
+//use pointers to optimize?
+
 class Storage
 {
     public List<int> Flag { get; } = new List<int>();

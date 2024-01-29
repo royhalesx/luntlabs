@@ -51,6 +51,8 @@ class AssignData
         }
     }
 
+    //Add some sort of a method to make it easier to interpret all this data and output it
+
     public void PrintTest()
     {
         using (StreamWriter ofp = new StreamWriter("output.txt"))

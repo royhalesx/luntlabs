@@ -2,4 +2,14 @@ Graphing interface - Switch to the website api?
 
 Make it able to go through folders of data and read all of them
 
+Add methods to better interpret the data over a larger scale (make it easier to graph)?
+
 Make it so that you can return all the values of one vector in one attribute
+
+Add a progress bar?
+
+Store data so we don't have to run the interpreter everytime we look at the graph
+
+Make it an application so it can be used on the linux machines
+
+
