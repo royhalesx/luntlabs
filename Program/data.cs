@@ -171,7 +171,43 @@ class Attributes
 {
     private string name = "none";
     private List<Storage> aspects = new List<Storage>();
+    private List<Storage> factored = new List<Storage>();
+
+
+    private int extra;
     private int it = 0;
+
+    private void refactorString(string value,int amount){
+        int total = 0;
+
+
+
+    }   
+    private void refactorInt(string value,int amount){
+        int total = 0;
+
+  for(int j = 0; j < Size(); j++){
+total += int.Parse( aspects[it].GetValue(value, j));
+if(j%amount == 0 && j != 0){
+    factored[it].SetValue(value,"" + Math.Ceiling((double) total/amount));
+    total = 0;
+}
+
+
+            }
+
+            if(extra > 0){ //Maybe delete later
+
+for(int j = Size()-1; j > (Size()-extra); j--){
+total += int.Parse(aspects[it].GetValue(value, j));
+            }
+    factored[it].SetValue(value, "" + Math.Ceiling((double) total/extra));
+
+            }
+
+
+    } 
+
 
     private void Start()
     {
@@ -179,6 +215,7 @@ class Attributes
         {
             Storage temp = new Storage();
             aspects.Add(temp);
+            factored.Add(temp);
         }
     }
 
@@ -203,9 +240,33 @@ class Attributes
         return holder;
     }
 
+    public string getFactor(string value, int count)
+    {
+        string holder = "";
+        for (int i = 0; i < factoredSize(); i++)
+        {
+
+             holder = holder + factored[count].GetValue(value, i) + " ";
+        }
+        return holder;
+    }
+
     public int Size()
     {
         return aspects[0].Value.Count;
+    }
+
+public int factoredSize()
+    {
+        return factored[0].Value.Count;
+    }
+   
+    public void refactor( string value, int amount){
+        // System.WriteLine("Made it here");
+        it = 0;
+         extra = Size()%amount;
+        refactorInt(value, amount);
+        
     }
 
     public void SetName(string input)

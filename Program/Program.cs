@@ -1,27 +1,29 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-// main();
-
+﻿
 string job = "138/job.json";
 
-//Add something so that we can say what drives to look through and make it so that it goes through all the folders and yeah
+string name = "test";
 
-// static void main(string[] args){
+int range = 0;
+
+
+
 AssignData par = new AssignData();
 
-par.NewTest("driveA");
+par.NewTest(name);
 
-// par.ReadFile("job6.json");
-
-// par.ReadFile("138/job" + 5 + ".json");
-
- for (int i = 0; i < 13; i++){
- par.ReadFile("138/job" + i + ".json");
+for (int j = 0; j < 13; j++){
+ par.ReadFile("138/job" + j + ".json");
 
  }
 
- par.PrintTest(); //This simply is printing the test so that we can see what the output looks like
+// for(int i = 0; i < range; i++){
+//  for (int j = 0; j < 13; j++){
+//  par.ReadFile(name + "/" + i + "/job" + j + ".json");
+
+//  }
+//  console.WriteLine(i + "/" + range);
+// }
+
+ par.PrintTest(); 
 
  Console.WriteLine("done");
-
-// }
