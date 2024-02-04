@@ -13,10 +13,3 @@ Store data so we don't have to run the interpreter everytime we look at the grap
 Make it an application so it can be used on the linux machines
 
 
-//rn
-
-Fuction that does everything and prints out their values and names in parse
-
-String function in data
-
-Why is the size returning 16?
