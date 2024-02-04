@@ -13,12 +13,8 @@ Store data so we don't have to run the interpreter everytime we look at the grap
 Make it an application so it can be used on the linux machines
 
 
-//rn
-Percentage for the booleans
+//run
 
+everything works I just need to make it find and read the files and format everything correctly
 
-
-//
-Set up some maps for the data in the data file and the string value
-
-format everything like a csv file
+Also the string refactor fuctions could use some improvement
