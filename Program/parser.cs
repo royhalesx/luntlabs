@@ -67,24 +67,24 @@ private string[] allValues = {"value", "worst", "thresh", "when_failed", "flag",
   
 
 
-    public void PrintTest()
+    public async void PrintTest(int amount)
     {
            
         using (StreamWriter ofp = new StreamWriter(tests.Last().GetName() + "_output.txt"))
         {
-            tests.Last().refactor(6);
+            tests.Last().refactor(amount);
 
-
-           
             for (int i = 0; i < 12; i++) //12
             {
                 ofp.WriteLine("**** *****" + idNames[i] + "**** *****"  );
 
                 tests.Last().setInt(i);
-             ofp.WriteLine(tests.Last().getFactor("value")+"\n" );
+            //  ofp.WriteLine(tests.Last().getFactor("value")+"\n" );
 
                 for(int j = 0; j < allValues.Length; j++){
-            //  ofp.WriteLine(allValues[j] + ": " + tests.Last().getFactor(allValues[i]));
+           //  ofp.WriteLine(allValues[j] + ": " + tests.Last().getFactor("value"));
+              ofp.WriteLine(allValues[j] + ": " + tests.Last().getFactor(allValues[j]));
+
         
                 }
 

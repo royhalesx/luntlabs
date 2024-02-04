@@ -7,6 +7,8 @@ string path;
 
 int range = 0;
 
+int dataPoints;
+
 
 
 AssignData par = new AssignData();
@@ -26,6 +28,6 @@ for (int j = 0; j < 13; j++){
 //  console.WriteLine(i + "/" + range);
 // }
 
- par.PrintTest(); 
+ par.PrintTest(6); 
 
  Console.WriteLine("done");
