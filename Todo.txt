@@ -14,9 +14,11 @@ Make it an application so it can be used on the linux machines
 
 
 //rn
+Percentage for the booleans
 
-Fuction that does everything and prints out their values and names in parse
 
-String function in data
 
-Why is the size returning 16?
+//
+Set up some maps for the data in the data file and the string value
+
+format everything like a csv file

@@ -3,6 +3,8 @@ string job = "138/job.json";
 
 string name = "test";
 
+string path;
+
 int range = 0;
 
 

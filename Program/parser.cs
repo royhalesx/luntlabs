@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+//iet presentation may 4th paper
 
 class AssignData
 {
@@ -14,6 +15,16 @@ class AssignData
     private bool found = false;
     private List<Attributes> tests = new List<Attributes>();
     private string temp = "test";
+
+    private string[] idNames = {"Raw_Read_Error_Rate", "Reallocate_NAND_Blk_Cnt", "Program_Fail_Count", "Erase_Fail_Count","Ave_Block-Erase_Count",
+    "Unexpect_Power_Loss_Ct", "Unused_Reserve_NAND_Blk", "SATA_Interfac_Downshift", "Error_Correction_Count", "Reported_Uncorrect", "Temperature_Celsius", "Reallocated_Event_Count"
+    };
+
+private string[] allValues = {"value", "worst", "thresh", "when_failed", "flag", "string", "prefailure", 
+"updated_online", "performance", "error_rate", 
+    "event_count", "raw_value"
+    };
+
 
     private string GetString(string input, int counter)
     {
@@ -53,42 +64,34 @@ class AssignData
 
     //Add some sort of a method to make it easier to interpret all this data and output it
 
+  
+
+
     public void PrintTest()
     {
            
         using (StreamWriter ofp = new StreamWriter(tests.Last().GetName() + "_output.txt"))
         {
-            //string holder = "";
-            tests.Last().refactor("value", 6);
+            tests.Last().refactor(6);
 
-            ofp.WriteLine(tests.Last().getFactor("value", 0));
-            
+
            
-            for (int i = 0; i < tests.Last().factoredSize(); i++)
+            for (int i = 0; i < 12; i++) //12
             {
-                ofp.WriteLine("Test " + i  +" \n");
+                ofp.WriteLine("**** *****" + idNames[i] + "**** *****"  );
 
-                    
+                tests.Last().setInt(i);
+             ofp.WriteLine(tests.Last().getFactor("value")+"\n" );
 
+                for(int j = 0; j < allValues.Length; j++){
+            //  ofp.WriteLine(allValues[j] + ": " + tests.Last().getFactor(allValues[i]));
+        
+                }
 
-            //     ofp.WriteLine(tests[it].GetAll("value", i));
-            //     ofp.WriteLine(tests[it].GetAll("worst", i));
-            //     ofp.WriteLine(tests[it].GetAll("thresh", i));
-            //     ofp.WriteLine(tests[it].GetAll("when_failed", i));
-            //     ofp.WriteLine(tests[it].GetAll("flag", i));
-                
-            //    ofp.WriteLine(tests[it].GetAll("string", i));
-            //    ofp.WriteLine(tests[it].GetAll("prefailure", i));
-
-            //    ofp.WriteLine(tests[it].GetAll("updated_online", i));
-            //     ofp.WriteLine(tests[it].GetAll("prefailure", i));
-            //     ofp.WriteLine(tests[it].GetAll("performance", i));
-            //     ofp.WriteLine(tests[it].GetAll("error_rate", i));
-            //     ofp.WriteLine(tests[it].GetAll("event_count", i));
-
-
-            //     ofp.WriteLine(tests[it].GetAll("rawValue", i));
             }
+    
+
+
         }
         
     }

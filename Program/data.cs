@@ -76,7 +76,7 @@ class Storage
         {
             eventCount.Add(input);
         }
-        else if (variable == "rawValue")
+        else if (variable == "raw_value" || variable == "rawValue")
         {
             RawValue.Add(double.Parse(input));
         }
@@ -116,9 +116,10 @@ class Storage
         {
             return Failed[count];
         }
-        else if (variable == "rawValue")
+        else if (variable == "raw_value"    || variable == "rawValue")
         {
-            return RawValue[count].ToString();
+            // Console.WriteLine(count + " " + RawValue.Count);
+            return  RawValue[count].ToString();
         }
         else if (variable == "prefailure")
         {
@@ -141,6 +142,7 @@ class Storage
         }
         else
         {
+            Console.WriteLine(variable);
 
             return "variable name mismatch";
         }
@@ -157,6 +159,7 @@ class Storage
             "string" => true,
             "updated_online" => true,
             "when_failed" => true,
+            "raw_value" => true,
             "rawValue" => true,
             "prefailure"=> true,
             "performance"=> true,
@@ -172,36 +175,60 @@ class Attributes
     private string name = "none";
     private List<Storage> aspects = new List<Storage>();
     private List<Storage> factored = new List<Storage>();
+    private Dictionary<string, int> stringValues;
 
+private string[] allInts = {"value", "worst", "thresh",  "flag",  "raw_value"
+    };
+private string[] allBools = {"prefailure", "when_failed",
+"updated_online", "performance", "error_rate", 
+    "event_count"};
 
     private int extra;
     private int it = 0;
 
-    private void refactorString(string value,int amount){
-        int total = 0;
-
-
-
-    }   
-    private void refactorInt(string value,int amount){
+    private void refactorString(int amount){
         int total = 0;
 
   for(int j = 0; j < Size(); j++){
-total += int.Parse( aspects[it].GetValue(value, j));
-if(j%amount == 0 && j != 0){
-    factored[it].SetValue(value,"" + Math.Ceiling((double) total/amount));
+if((1+j)%amount == 0){
+    factored[it].SetValue("string", aspects[it].GetValue("string", j));
+
     total = 0;
+}
+  }
+
+
+    }   
+
+private void refactorBool(string value,int amount){
+        int total = 0;
+
+  for(int j = 0; j < Size(); j++){
+if((1+j)%amount == 0){
+    factored[it].SetValue(value, aspects[it].GetValue(value, j));
+
+    total = 0;
+}
 }
 
 
-            }
+    }   
 
-            if(extra > 0){ //Maybe delete later
 
-for(int j = Size()-1; j > (Size()-extra); j--){
-total += int.Parse(aspects[it].GetValue(value, j));
-            }
-    factored[it].SetValue(value, "" + Math.Ceiling((double) total/extra));
+    private void refactorInt(string value,int amount){
+        double total = 0;
+
+  for(int j = 0; j < Size(); j++){
+total += double.Parse( aspects[it].GetValue(value, j));
+
+  
+   
+if((1+j)%amount == 0){
+    factored[it].SetValue(value,"" + Math.Ceiling((double) total/amount));
+
+    total = 0;
+}
+
 
             }
 
@@ -214,8 +241,10 @@ total += int.Parse(aspects[it].GetValue(value, j));
         for (int i = 0; i < 12; i++)
         {
             Storage temp = new Storage();
+            Storage factorTemp = new Storage();
+
             aspects.Add(temp);
-            factored.Add(temp);
+            factored.Add(factorTemp);
         }
     }
 
@@ -240,17 +269,28 @@ total += int.Parse(aspects[it].GetValue(value, j));
         return holder;
     }
 
-    public string getFactor(string value, int count)
+
+
+
+//Factoring
+
+    
+    public string getFactor(string value)
     {
         string holder = "";
         for (int i = 0; i < factoredSize(); i++)
         {
 
-             holder = holder + factored[count].GetValue(value, i) + " ";
+             holder = holder + factored[it].GetValue(value, i) + " ";
         }
         return holder;
-    }
 
+
+    }
+    
+
+    
+   
     public int Size()
     {
         return aspects[0].Value.Count;
@@ -261,14 +301,31 @@ public int factoredSize()
         return factored[0].Value.Count;
     }
    
-    public void refactor( string value, int amount){
+    public void refactor(int amount){ //make this factor everything
         // System.WriteLine("Made it here");
-        it = 0;
          extra = Size()%amount;
-        refactorInt(value, amount);
+        it = 0; 
+        refactorInt("value", amount);
+
+         for(int i = 0; i < 12; i++){
+        refactorString(amount);
+// foreach(string l in allInts){
+//     // Console.WriteLine(aspects[it].Value.Count);
+//     refactorInt(l, amount);
+// }
+
+// foreach(string k in allBools){
+//     refactorBool(k, amount);
+// }
+
+
+         }
         
     }
 
+
+
+//Identitity
     public void SetName(string input)
     {
         name = input;
@@ -287,6 +344,13 @@ public int factoredSize()
     {
         return aspects[it].Verify(value);
     }
+
+
+
+    public void setInt(int id){
+        it = id;
+    }
+
 
     public int Selector(int id)
     {
