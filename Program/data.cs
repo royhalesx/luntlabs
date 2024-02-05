@@ -323,7 +323,7 @@ if(((j)%amount) == 0){
         for (int i = 0; i < factoredSize(); i++)
         {
 
-             holder = holder + factored[it].GetValue(value, i) + " ";
+             holder = holder + factored[it].GetValue(value, i) + ",";
         }
         return holder;
 

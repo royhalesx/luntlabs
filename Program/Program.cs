@@ -21,40 +21,48 @@ AssignData par = new AssignData();
 
 Console.WriteLine("Please input the path");
 path = Console.ReadLine();
-name = path.Substring(path.IndexOf("/"));
-while(name.Contains("/")){
-name = path.Substring(name.IndexOf("/"));
 
+if(path.Contains("\"")){
+path = path.Substring(1, path.Length-2);
+}
+
+name = path.Substring(path.IndexOf("\\")+1);
+// Console.WriteLine(name);
+while(name.Contains("\\")){
+name = name.Substring(name.IndexOf("\\")+1);
+// Console.WriteLine(name);
 }
 
 Console.WriteLine(name);
 
-// Console.WriteLine("Please input range of folders in the path");
+Console.WriteLine("Please input range of folders in the path");
+range = int.Parse(Console.ReadLine());
 
-// Console.WriteLine("Please input the amount you want the data averaged out");
-
-
-
-
-// par.NewTest(name);
+Console.WriteLine("Please input the amount you want the data averaged out");
+dataPoints = int.Parse(Console.ReadLine());
 
 
-// for(int i = 0; i < range; i++){
+
+
+par.NewTest(name);
+
+
+for(int i = 1; i < range+1; i++){
     
-// try{
+try{
     
 
-//  for (int j = 0; j < 13; j++){
-//  par.ReadFile(path + name + "/" + i + "/job" + j + ".json");
+ for (int j = 0; j < 13; j++){
+ par.ReadFile(path + "\\" + i + "\\job" + j + ".json");
 
-//  }
-//  console.WriteLine(i + "/" + range);
-// }
-// catch(Exception e){
-//     Console.WriteLine("Cannot open folder " + i);
-// }
-// }
+ }
+ Console.WriteLine(i + "/" + range);
+}
+catch(Exception e){
+    Console.WriteLine("Cannot open folder " + i);
+}
+}
 
-//  par.PrintTest(6); 
+ par.PrintTest(dataPoints); 
 
-//  Console.WriteLine("done");
+ Console.WriteLine("done");
