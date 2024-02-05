@@ -1,27 +1,68 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-// main();
-
+﻿
 string job = "138/job.json";
 
-//Add something so that we can say what drives to look through and make it so that it goes through all the folders and yeah
+string name = "test";
 
-// static void main(string[] args){
+string path;
+
+int range = 0;
+
+int dataPoints;
+
+
+
 AssignData par = new AssignData();
 
-par.NewTest("driveA");
 
-// par.ReadFile("job6.json");
+// for (int j = 0; j < 13; j++){
+//  par.ReadFile("138/job" + j + ".json");
 
-// par.ReadFile("138/job" + 5 + ".json");
+//  }
 
- for (int i = 0; i < 13; i++){
- par.ReadFile("138/job" + i + ".json");
+Console.WriteLine("Please input the path");
+path = Console.ReadLine();
+
+if(path.Contains("\"")){
+path = path.Substring(1, path.Length-2);
+}
+
+name = path.Substring(path.IndexOf("\\")+1);
+// Console.WriteLine(name);
+while(name.Contains("\\")){
+name = name.Substring(name.IndexOf("\\")+1);
+// Console.WriteLine(name);
+}
+
+Console.WriteLine(name);
+
+Console.WriteLine("Please input range of folders in the path");
+range = int.Parse(Console.ReadLine());
+
+Console.WriteLine("Please input the amount you want the data averaged out");
+dataPoints = int.Parse(Console.ReadLine());
+
+
+
+
+par.NewTest(name);
+
+
+for(int i = 1; i < range+1; i++){
+    
+try{
+    
+
+ for (int j = 0; j < 13; j++){
+ par.ReadFile(path + "\\" + i + "\\job" + j + ".json");
 
  }
+ Console.WriteLine(i + "/" + range);
+}
+catch(Exception e){
+    Console.WriteLine("Cannot open folder " + i);
+}
+}
 
- par.PrintTest(); //This simply is printing the test so that we can see what the output looks like
+ par.PrintTest(dataPoints); 
 
  Console.WriteLine("done");
-
-// }
