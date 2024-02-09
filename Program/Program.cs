@@ -1,15 +1,37 @@
-﻿string name = "test";
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
-string path;
+
+
+string name = "test";
+
+
+string path = "";
 
 int range = 180;
 
 int dataPoints = 20;
 
+int total = 1;
+
+int count = 0;
+
+bool diff = false;
 
 
-AssignData par = new AssignData();
+Complier obj = new Complier();
+Console.WriteLine("How many tests would you like to do today?");
+total = int.Parse(Console.ReadLine());
 
+// Console.WriteLine("Are they all on the same drive or are the differnet drives?");
+//if(Console.ReadLine() == "true"){
+//     diff = true;
+// }
+
+
+while(count < total){
 
 
 Console.WriteLine("Please input the path"); 
@@ -36,27 +58,17 @@ dataPoints = int.Parse(Console.ReadLine()); //This is the number it divides the 
 }
 catch(Exception) {Console.WriteLine("Default values have been used: 20 for the dataPoints and 180 for the range");}
 
+count++;
+} 
 
+obj.run(name, range, path);
+obj.printTest(dataPoints);
 
-par.NewTest(name); //Makes a new object and names it test
+// for (int i = 0; i < total; i++){
+//     obj.run(names[i], ranges[i], paths[i]);
+// obj.printTest(dataPoints);
 
+// }
 
-for(int i = 1; i < range+1; i++){ //This just finds every single file and sends it into the parser file to extract the data
-    
-try{ //The try makes sure the file exists in an easier way
-    
-
- for (int j = 0; j < 13; j++){
- par.ReadFile(path + "\\" + i + "\\job" + j + ".json");
-
- }
- Console.WriteLine(i + "/" + range);//A progress bar of sorts telling you how long it will take
-}
-catch(Exception e){ //if it fails it reports what folder it couldn't open
-    Console.WriteLine("Cannot open folder " + i);
-}
-}
-
- par.PrintTest(dataPoints); //This takes all the data collected and divides and formats it in a way that will be easy to graph
 
  Console.WriteLine("done");
