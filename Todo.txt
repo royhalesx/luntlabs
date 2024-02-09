@@ -1,7 +1,3 @@
 Graph all the data points
 
-Maybe make it so it can just do a lot more points or ask for multiple data points and if a drive needs multiple tests done
-
-Put everything in complier Method
-
 Make path check for forward slashes
