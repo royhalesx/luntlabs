@@ -24,12 +24,27 @@ bool diff = false;
 Complier obj = new Complier();
 Console.WriteLine("How many tests would you like to do today?");
 total = int.Parse(Console.ReadLine());
+if(total > 1){
 
-// Console.WriteLine("Are they all on the same drive or are the differnet drives?");
-//if(Console.ReadLine() == "true"){
-//     diff = true;
-// }
+Console.WriteLine("If they are all on the same drive please type true with no caps. If they are on differnt type false with no caps");
+if(Console.ReadLine() == "false"){
+    diff = true;
+}
 
+}
+obj.collectData(total);
+if(diff){
+    obj.diffTests(total);
+}
+else{
+    obj.sameDrive(total);
+}
+
+
+
+ Console.WriteLine("done");
+
+/*
 
 while(count < total){
 
@@ -63,12 +78,4 @@ count++;
 
 obj.run(name, range, path);
 obj.printTest(dataPoints);
-
-// for (int i = 0; i < total; i++){
-//     obj.run(names[i], ranges[i], paths[i]);
-// obj.printTest(dataPoints);
-
-// }
-
-
- Console.WriteLine("done");
+*/

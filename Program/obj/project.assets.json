@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\infin\\Documents\\Programming\\OvenLogger\\luntlabs\\Program\\Program.csproj",
+      "projectUniqueName": "C:\\Users\\infin\\Coding\\LuntLabs\\Program\\Program.csproj",
       "projectName": "Program",
-      "projectPath": "C:\\Users\\infin\\Documents\\Programming\\OvenLogger\\luntlabs\\Program\\Program.csproj",
+      "projectPath": "C:\\Users\\infin\\Coding\\LuntLabs\\Program\\Program.csproj",
       "packagesPath": "C:\\Users\\infin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\infin\\Documents\\Programming\\OvenLogger\\luntlabs\\Program\\obj\\",
+      "outputPath": "C:\\Users\\infin\\Coding\\LuntLabs\\Program\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
