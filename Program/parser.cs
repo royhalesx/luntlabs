@@ -68,7 +68,7 @@ private string[] allValues = {"value", "worst", "thresh", "when_failed", "flag",
     public async void PrintTest(int amount)//This prints all the factored data out and factors it into the output file
     {
            
-        using (StreamWriter ofp = new StreamWriter("Output\\" + tests.Last().GetName() + "_output.txt")) //names the output file the name of the main folder_output.txt
+        using (StreamWriter ofp = new StreamWriter("Output/" + tests.Last().GetName() + "_output.txt")) //names the output file the name of the main folder_output.txt
         {
             tests.Last().refactor(amount); //Tells the data file to factor all the data points into something more manageable
 

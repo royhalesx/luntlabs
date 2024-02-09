@@ -25,7 +25,7 @@ try{ //The try makes sure the file exists in an easier way
     
 
  for (int j = 0; j < 13; j++){
- par.ReadFile(path + "\\" + i + "\\job" + j + ".json");
+ par.ReadFile(path + "/" + i + "/job" + j + ".json");
 
  }
  Console.WriteLine(i + "/" + range + " Folders in test " + name);//A progress bar of sorts telling you how long it will take
@@ -59,8 +59,8 @@ temp = temp.Substring(1, temp.Length-2);//exclude them by taking a substring of 
 
 nameTemp = temp; //This just sets name equal to path and starts off by 
 
-while(nameTemp.Contains("\\")){ //This while loop derives the name of the folder to use as the output folder later on and to name the test
-nameTemp = nameTemp.Substring(nameTemp.IndexOf("\\")+1);
+while(nameTemp.Contains("/")){ //This while loop derives the name of the folder to use as the output folder later on and to name the test
+nameTemp = nameTemp.Substring(nameTemp.IndexOf("/")+1);
 }
 names.Add(nameTemp);
 paths.Add(temp);
