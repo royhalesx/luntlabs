@@ -1,1 +1,3 @@
 Graph all the data points
+
+Maybe make it so it can just do a lot more points or ask for multiple data points
