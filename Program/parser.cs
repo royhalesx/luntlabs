@@ -5,6 +5,7 @@ using System.Linq;
 
 class AssignData
 {
+    public string outputPath;
     private StreamReader ifp;
     private string line;
     private int first;
@@ -55,7 +56,12 @@ class AssignData
 
     public void PrintTest()
     {
+<<<<<<< Updated upstream
         using (StreamWriter ofp = new StreamWriter("output.txt"))
+=======
+           
+        using (StreamWriter ofp = new StreamWriter(outputPath + tests.Last().GetName() + "_output.txt")) //names the output file the name of the main folder_output.txt
+>>>>>>> Stashed changes
         {
             //string holder = "";
             for (int i = 0; i < tests[it].Size(); i++)
