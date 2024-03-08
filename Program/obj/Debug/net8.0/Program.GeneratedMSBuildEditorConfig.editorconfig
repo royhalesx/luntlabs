@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Program
-build_property.ProjectDir = C:\Users\infin\Coding\LuntLabs\Program\
+build_property.ProjectDir = C:\Users\infin\Documents\Programming\OvenLogger\luntlabs\Program\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
