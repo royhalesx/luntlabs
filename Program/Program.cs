@@ -5,13 +5,18 @@ using System.Linq;
 
 
 
+string name = "test";
 
 
+string path = "";
 
+int range = 180;
 
+int dataPoints = 20;
 
 int total = 1;
 
+int count = 0;
 
 bool diff = false;
 
