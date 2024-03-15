@@ -13,11 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Program")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc60a1e91c05b88198aaa8c111141e1b74149fb0")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2822be9ce5a99ce32fa95a1b06c807ac241262e0")]
->>>>>>> parent of d173b57 (FixedWarnings)
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b35bfdb53008a65ef71121d1b895891b565e9ae3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Program")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Program")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
