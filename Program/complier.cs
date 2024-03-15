@@ -24,7 +24,7 @@ for(int i = 1; i < range+1; i++){ //This just finds every single file and sends 
 try{ //The try makes sure the file exists in an easier way
     
 
- for (int j = 0; j < 13; j++){
+ for (int j = 0; j < 2; j++){
  par.ReadFile(path + "\\" + i + "\\job" + j + ".json");
 
  }
