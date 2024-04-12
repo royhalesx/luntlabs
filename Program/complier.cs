@@ -7,10 +7,10 @@ class Complier{
 //Config Variables
 private string file = "Config.txt";
 
-private string[] configs = {"Output path", "inital", "final"};
-private string[] convals = {"output", "job0", "job1"};
+private string[] configs = {"Output path", "inital", "final", "machine"};
+private string[] convals = {"output", "job0", "job1", "windows"};
 
-
+private string version = "/";
 
 private void runConfig(){
     string line;
@@ -30,7 +30,11 @@ StreamReader ifp = new StreamReader(file);//opens the file
             count++;
 
         }
+        if(convals[3].Contains("windows") || convals[3].Contains("w")){
+            version = "\\";
+        }
 
+            convals[0] = convals[0] + version;
 
 }
 
@@ -67,8 +71,8 @@ temp = temp.Substring(1, temp.Length-2);//exclude them by taking a substring of 
 
 nameTemp = temp; //This just sets name equal to path and starts off by 
 
-while(nameTemp.Contains("\\")){ //This while loop derives the name of the folder to use as the output folder later on and to name the test
-nameTemp = nameTemp.Substring(nameTemp.IndexOf("\\")+1);
+while(nameTemp.Contains(version)){ //This while loop derives the name of the folder to use as the output folder later on and to name the test
+nameTemp = nameTemp.Substring(nameTemp.IndexOf(version)+1);
 }
 names.Add(nameTemp);
 paths.Add(temp);
@@ -87,8 +91,8 @@ public void run(string name, string path){
 try{ //The try makes sure the file exists in an easier way
     
 
- par.ReadFile(path + "\\" + convals[1] + ".json");
- par.ReadFile(path + "\\" + convals[2] + ".json");
+ par.ReadFile(path + version + convals[1] + ".json");
+ par.ReadFile(path + version + convals[2] + ".json");
 
 
  Console.WriteLine("Done with test "+  name);//A progress bar of sorts telling you how long it will take
@@ -128,7 +132,7 @@ for(int i = 0; i < total; i++){
 
 
 public void printTest(){
- par.PrintTest(dataPoints, "Output\\"); //This takes all the data collected and divides and formats it in a way that will be easy to graph
+ par.PrintTest(dataPoints, convals[0]); //This takes all the data collected and divides and formats it in a way that will be easy to graph
 
 }
 

@@ -1,2 +1,4 @@
-Output path:Output\\
+Output path:Output
+initial:job0
+final:job1
 Machine:windows

@@ -118,7 +118,7 @@ int divide;
 private string[] allInts = {"value", "worst", "thresh",  "flag",  "raw_value"
     };
 
-    private int[] weight = {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1};
+    private int[] weight = {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1}; //This is what decides how much weight each value has on drive health
 
 
     private int extra;
