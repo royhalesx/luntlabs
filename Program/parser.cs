@@ -19,10 +19,10 @@ class AssignData
     private string[] idNames = {"Raw_Read_Error_Rate", "Reallocate_NAND_Blk_Cnt", "Program_Fail_Count", "Erase_Fail_Count","Ave_Block-Erase_Count",
     "Unexpect_Power_Loss_Ct", "Unused_Reserve_NAND_Blk", "SATA_Interfac_Downshift", "Error_Correction_Count", "Reported_Uncorrect", "Temperature_Celsius", "Reallocated_Event_Count"
     };
+   
+   
 
-private string[] allValues = {"value", "worst", "thresh", "when_failed", "flag", "string", "prefailure", 
-"updated_online", "performance", "error_rate", 
-    "event_count", "raw_value"
+private string[] allValues = {"value", "worst", "thresh",  "raw_value"
     };
 
 
@@ -65,10 +65,10 @@ private string[] allValues = {"value", "worst", "thresh", "when_failed", "flag",
   
 
 
-    public async void PrintTest(int amount)//This prints all the factored data out and factors it into the output file
+    public async void PrintTest(int amount, string path)//This prints all the factored data out and factors it into the output file
     {
            
-        using (StreamWriter ofp = new StreamWriter("Output/" + tests.Last().GetName() + "_output.txt")) //names the output file the name of the main folder_output.txt
+        using (StreamWriter ofp = new StreamWriter(path+ tests.Last().GetName() + "_output.txt")) //names the output file the name of the main folder_output.txt
         {
             tests.Last().refactor(amount); //Tells the data file to factor all the data points into something more manageable
 
@@ -80,13 +80,11 @@ private string[] allValues = {"value", "worst", "thresh", "when_failed", "flag",
 
                 for(int j = 0; j < allValues.Length; j++){
               ofp.WriteLine(allValues[j] + "" + tests.Last().getFactor(allValues[j]));//Requests a string with all the data points for a a single value with all the points
-
-        
                 }
-
+                           
+               
             }
-    
-
+            ofp.WriteLine("Drive Health" + tests.Last().getPercentage());
 
         }
         
