@@ -41,7 +41,7 @@ private List<string> paths  { get; }= new List<string>();
 
 
 private AssignData par = new AssignData();
-private int dataPoints;
+private int dataPoints = 1;
 
 
 
@@ -52,8 +52,8 @@ string temp;
 string nameTemp;
 runConfig();
 
-Console.WriteLine("Please input the amount you want the data averaged out for all drives");
-dataPoints = int.Parse(Console.ReadLine()); //This is the number it divides the data by so 
+//Console.WriteLine("Please input the amount you want the data averaged out for all drives");
+//dataPoints = int.Parse(Console.ReadLine()); //This is the number it divides the data by so 
 
 while(count < total){
 

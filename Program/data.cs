@@ -11,11 +11,12 @@ using System.Linq;
 
 class Storage
 {
-    public List<int> Flag { get; } = new List<int>();
+    private List<int> Flag { get; } = new List<int>();
     public List<int> Value { get; } = new List<int>();
     public List<int> Worst { get; } = new List<int>();
     public List<int> Thresh { get; } = new List<int>();
     public List<double> RawValue { get; } = new List<double>();
+    public List<double> percentage { get; } = new List<double>();
 
     
 
@@ -43,6 +44,10 @@ class Storage
         else if (variable == "raw_value" || variable == "rawValue")
         {
             RawValue.Add(double.Parse(input));
+        }
+        else if (variable == "percentage" || variable == "percent")
+        {
+            percentage.Add(double.Parse(input));
         }
         else {
         //  Console.WriteLine("bad");
@@ -73,6 +78,10 @@ class Storage
             // Console.WriteLine(count + " " + RawValue.Count);
             return  RawValue[count].ToString();
         }
+          else if (variable == "percentage" || variable == "percent")
+        {
+           return percentage[count].ToString();
+        }
         else
         {
             Console.WriteLine(variable);
@@ -101,12 +110,15 @@ class Attributes
     private string name = "none";
     private List<Storage> aspects = new List<Storage>();
     private List<Storage> factored = new List<Storage>();
-    private List<string> stringValues = new List<string>();
 
+double totalPercent;
+int divide;
     
 
 private string[] allInts = {"value", "worst", "thresh",  "flag",  "raw_value"
     };
+
+    private int[] weight = {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1};
 
 
     private int extra;
@@ -126,6 +138,29 @@ private string[] allInts = {"value", "worst", "thresh",  "flag",  "raw_value"
 
         
 
+
+    }
+    public void addPercentage(int count){
+        double x = 100- double.Parse(factored[it].GetValue("thresh", count));
+        double y = double.Parse(factored[it].GetValue("value", count)) - double.Parse(factored[it].GetValue("thresh", count)); //maybe change this to worst?
+    factored[it].SetValue("percentage","" + (y/x*100));
+    }
+    public string getPercentage(){
+string holder = "";
+        // Console.WriteLine(factoredSize());
+        for (int i = 0; i < factoredSize(); i++)
+        {
+            for(int j =0; j < 12; j++){
+             totalPercent += double.Parse(factored[j].GetValue("percentage", i)) * weight[j];
+             divide += weight[j];
+
+            }
+            totalPercent = (totalPercent/divide);
+             holder += "," + totalPercent + "%";
+             totalPercent = 0;
+             divide = 0;
+        }
+        return holder;
 
     }
 
@@ -173,19 +208,19 @@ private string[] allInts = {"value", "worst", "thresh",  "flag",  "raw_value"
 total += double.Parse( aspects[it].GetValue(value, j-1));
 
   
-   
-if(((j)%amount) == 0){
+                
+                if(((j)%amount) == 0){
 
-// Console.WriteLine(value + " " + it);
+                // Console.WriteLine(value + " " + it);
 
-    factored[it].SetValue(value,"" + Math.Ceiling((double) total/amount));
+                    factored[it].SetValue(value,"" + Math.Ceiling((double) total/amount));
 
-    total = 0;
-}
+                    total = 0;
+                }
+
 
 
             }
-
 
     } 
  
@@ -199,8 +234,11 @@ if(((j)%amount) == 0){
         // Console.WriteLine(factoredSize());
         for (int i = 0; i < factoredSize(); i++)
         {
+            addPercentage(i);
 
              holder = holder+ "," + factored[it].GetValue(value, i);
+  
+             
         }
         return holder;
 

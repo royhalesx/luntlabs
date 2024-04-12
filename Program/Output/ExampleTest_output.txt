@@ -1,5 +1,5 @@
 Raw_Read_Error_Rate,
-value,1000,100
+value,100,100
 worst,100,100
 thresh,0,0
 raw_value,0,0
@@ -58,3 +58,4 @@ value,100,100
 worst,100,100
 thresh,0,0
 raw_value,0,0
+Drive Health,100%,100%

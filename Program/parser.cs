@@ -19,6 +19,8 @@ class AssignData
     private string[] idNames = {"Raw_Read_Error_Rate", "Reallocate_NAND_Blk_Cnt", "Program_Fail_Count", "Erase_Fail_Count","Ave_Block-Erase_Count",
     "Unexpect_Power_Loss_Ct", "Unused_Reserve_NAND_Blk", "SATA_Interfac_Downshift", "Error_Correction_Count", "Reported_Uncorrect", "Temperature_Celsius", "Reallocated_Event_Count"
     };
+   
+   
 
 private string[] allValues = {"value", "worst", "thresh",  "raw_value"
     };
@@ -78,13 +80,11 @@ private string[] allValues = {"value", "worst", "thresh",  "raw_value"
 
                 for(int j = 0; j < allValues.Length; j++){
               ofp.WriteLine(allValues[j] + "" + tests.Last().getFactor(allValues[j]));//Requests a string with all the data points for a a single value with all the points
-
-        
                 }
-
+                           
+               
             }
-    
-
+            ofp.WriteLine("Drive Health" + tests.Last().getPercentage());
 
         }
         

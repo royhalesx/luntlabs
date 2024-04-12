@@ -1,3 +1,2 @@
 Output path:Output\\
-Subfolders:
 Machine:windows
