@@ -7,8 +7,9 @@ class Complier{
 //Config Variables
 private string file = "Config.txt";
 
-private string[] configs = {"Output path", "hi"};
-private string[] convals = {"output", "hi"};
+private string[] configs = {"Output path", "inital", "final"};
+private string[] convals = {"output", "job0", "job1"};
+
 
 
 private void runConfig(){
@@ -21,10 +22,10 @@ StreamReader ifp = new StreamReader(file);//opens the file
             
             line = ifp.ReadLine();
 
-            if(line.Contains(configs[count])){
+            if(count < configs.Length && line.Contains(configs[count])){
                convals[count] = line.Substring(line.IndexOf(":") + 1);
             }
-                Console.WriteLine(convals[0]);
+                //Console.WriteLine(convals[0]);
 
             count++;
 
@@ -38,7 +39,6 @@ private List<string> names  { get; } = new List<string>();
 
 private List<string> paths  { get; }= new List<string>();
 
-private List<int> ranges { get; } = new List<int>();
 
 private AssignData par = new AssignData();
 private int dataPoints;
@@ -74,38 +74,27 @@ names.Add(nameTemp);
 paths.Add(temp);
 
 Console.WriteLine(names[count]); //Prints out the name so you know what it assumes is the name of the folder
-
-try{ //This is in a try and catch and if you just click enter it will use the default values
-Console.WriteLine("Please input range of folders in the path in drive " + count);
-ranges.Add(int.Parse(Console.ReadLine())); //The range is the amount of subfolders in the main folder
-
-}
-catch(Exception) {Console.WriteLine("Default values have been used: 20 for the dataPoints and 180 for the range");}
-
 count++;
-} 
+}
 }
 
 
 
-public void run(string name, int range, string path){
+public void run(string name, string path){
     
 
 
-for(int i = 1; i < range+1; i++){ //This just finds every single file and sends it into the parser file to extract the data
-    
 try{ //The try makes sure the file exists in an easier way
     
 
- for (int j = 0; j < 13; j++){
- par.ReadFile(path + "\\" + i + "\\job" + j + ".json");
+ par.ReadFile(path + "\\" + convals[1] + ".json");
+ par.ReadFile(path + "\\" + convals[2] + ".json");
 
- }
- Console.WriteLine(i + "/" + range + " Folders in test " + name);//A progress bar of sorts telling you how long it will take
+
+ Console.WriteLine("Done with test "+  name);//A progress bar of sorts telling you how long it will take
 }
 catch(Exception e){ //if it fails it reports what folder it couldn't open
-    Console.WriteLine("Cannot open folder " + i);
-}
+    Console.WriteLine("Cannot open file for test " + name);
 }
 
 }
@@ -117,7 +106,7 @@ public void diffTests(int total){
 par.NewTest(names[i]); //Makes a new object and names it test
 
 
-        run(names[i], ranges[i], paths[i]);
+        run(names[i], paths[i]);
         printTest();
         Console.WriteLine("Done with Tests " + names[i]);
     }
@@ -128,7 +117,7 @@ par.NewTest(names[i]); //Makes a new object and names it test
 public void sameDrive(int total){
     par.NewTest(names[0]);
 for(int i = 0; i < total; i++){
-        run(names[i], ranges[i], paths[i]);
+        run(names[i], paths[i]);
         Console.WriteLine("Done with Test " + i);
 
     }

@@ -15,17 +15,8 @@ class Storage
     public List<int> Value { get; } = new List<int>();
     public List<int> Worst { get; } = new List<int>();
     public List<int> Thresh { get; } = new List<int>();
-    public List<string> Failed { get; } = new List<string>();
-
-    public List<string> Type { get; } = new List<string>();
-
-    public List<string> Updated { get; } = new List<string>();
     public List<double> RawValue { get; } = new List<double>();
 
-    public List<string> preFail { get; } = new List<string>();
-    public List<string> performance { get; } = new List<string>();
-    public List<string> errorRate { get; } = new List<string>();
-    public List<string> eventCount { get; } = new List<string>();
     
 
     public void SetValue(string variable, string input)
@@ -48,37 +39,6 @@ class Storage
         else if (variable == "thresh")
         {
             Thresh.Add(int.Parse(input));
-        }
-        else if (variable == "string")
-        {
-            
-            Type.Add(input);
-
-            // Type.Add(input.Substring(1, input.Length-3));
-        }
-        else if (variable == "updated_online")
-        {
-            Updated.Add(input);
-        }
-        else if (variable == "when_failed")
-        {
-            Failed.Add(input);
-        }
-        else if (variable == "prefailure")
-        {
-            preFail.Add(input);
-        }
-        else if (variable == "performance")
-        {
-            performance.Add(input);
-        }
-        else if (variable == "error_rate")
-        {
-            errorRate.Add(input);
-        }
-        else if (variable == "event_count")
-        {
-            eventCount.Add(input);
         }
         else if (variable == "raw_value" || variable == "rawValue")
         {
@@ -108,41 +68,10 @@ class Storage
         {
             return Thresh[count].ToString();
         }
-        else if (variable == "string")
-        {
-            return Type[count];
-        }
-        else if (variable == "updated_online")
-        {
-            return Updated[count];
-        }
-        else if (variable == "when_failed")
-        {
-            return Failed[count];
-        }
         else if (variable == "raw_value"    || variable == "rawValue")
         {
             // Console.WriteLine(count + " " + RawValue.Count);
             return  RawValue[count].ToString();
-        }
-        else if (variable == "prefailure")
-        {
-           return preFail[count];
-        }
-        else if (variable == "performance")
-        {
-           return performance[count];
-
-        }
-        else if (variable == "error_rate")
-        {
-           return errorRate[count];
-
-        }
-        else if (variable == "event_count")
-        {
-           return eventCount[count];
-
         }
         else
         {
@@ -160,15 +89,8 @@ class Storage
             "value" => true,
             "thresh" => true,
             "worst" => true,
-            "string" => true,
-            "updated_online" => true,
-            "when_failed" => true,
             "raw_value" => true,
             "rawValue" => true,
-            "prefailure"=> true,
-            "performance"=> true,
-            "error_rate"=> true,
-            "event_count"=> true,
             _ => false
         };
     }
@@ -185,9 +107,7 @@ class Attributes
 
 private string[] allInts = {"value", "worst", "thresh",  "flag",  "raw_value"
     };
-private string[] allBools = {"prefailure", "when_failed",
-"updated_online", "performance", "error_rate", 
-    "event_count"};
+
 
     private int extra;
     private int it = 0;
@@ -203,10 +123,6 @@ private string[] allBools = {"prefailure", "when_failed",
             aspects.Add(temp);
             factored.Add(factorTemp);
         }
-        stringValues.Add("\"POSR-K \"");
-        stringValues.Add("\"-O--CK \"");
-        stringValues.Add("\"PO--CK \"");
-        stringValues.Add("\"-O---K \"");
 
         
 
@@ -246,46 +162,6 @@ private string[] allBools = {"prefailure", "when_failed",
 //Factoring
 
    
-    private void refactorString(string value, int amount){
-        string rawOut;
-int[] total = {0, 0 ,0 ,0};
-  for(int j = 0; j < Size(); j++){
-   rawOut = aspects[it].GetValue(value, j);
-   if(stringValues.Contains(rawOut)){
-    total[stringValues.IndexOf(rawOut)] +=1;
-   }
-   else {
-    Console.WriteLine(rawOut);
-   }
-if((1+j)%amount == 0){
-    factored[it].SetValue(value, stringValues[total.ToList().IndexOf(total.Max())]);
-    total[0] = 0; 
-    total[1] = 0; 
-    total[2] = 0; 
-    total[3] = 0; 
-}
-  }
-
-
-    }   
-
-private void refactorBool(string value,double amount){
-        double total = 0;
-
-  for(int j = 0; j < Size(); j++){
-    if(aspects[it].GetValue(value, j) == "true"){
-        total++;
-    }
-if((1+j)%amount == 0){
-    factored[it].SetValue(value, ((double)total/amount * 100).ToString());
-
-
-    total = 0;
-}
-}
-
-
-    }   
 
 
     private void refactorInt(string value,int amount){
@@ -346,16 +222,13 @@ public int factoredSize()
          for(int i = 0; i < 12; i++){
 
         it = i;
-        refactorString("string", amount);
+        
 
 foreach(string j in allInts){
     // Console.WriteLine(it);
     refactorInt(j, amount);
 }
 
-foreach(string k in allBools){
-    refactorBool(k, amount);
-}
 
 
          }

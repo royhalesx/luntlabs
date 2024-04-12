@@ -27,7 +27,9 @@ if(Console.ReadLine() == "false"){
 }
 
 }
+
 obj.collectData(total);
+
 if(diff){
     obj.diffTests(total);
 }

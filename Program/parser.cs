@@ -20,9 +20,7 @@ class AssignData
     "Unexpect_Power_Loss_Ct", "Unused_Reserve_NAND_Blk", "SATA_Interfac_Downshift", "Error_Correction_Count", "Reported_Uncorrect", "Temperature_Celsius", "Reallocated_Event_Count"
     };
 
-private string[] allValues = {"value", "worst", "thresh", "when_failed", "flag", "string", "prefailure", 
-"updated_online", "performance", "error_rate", 
-    "event_count", "raw_value"
+private string[] allValues = {"value", "worst", "thresh",  "raw_value"
     };
 
 
