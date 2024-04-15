@@ -22,7 +22,7 @@ StreamReader ifp = new StreamReader(file);//opens the file
             
             line = ifp.ReadLine();
 
-            if(count < configs.Length && line.Contains(configs[count])){
+            if(count <= configs.Length && line.Contains(configs[count])){
                convals[count] = line.Substring(line.IndexOf(":") + 1);
             }
                 //Console.WriteLine(convals[0]);
@@ -30,7 +30,7 @@ StreamReader ifp = new StreamReader(file);//opens the file
             count++;
 
         }
-        if(convals[3].Contains("windows") || convals[3].Contains("w")){
+        if(convals[3].Contains('w')){
             version = "\\";
         }
 
@@ -90,7 +90,7 @@ public void run(string name, string path){
 
 try{ //The try makes sure the file exists in an easier way
     
-
+Console.WriteLine(path+version+convals[1] + ".json");
  par.ReadFile(path + version + convals[1] + ".json");
  par.ReadFile(path + version + convals[2] + ".json");
 
