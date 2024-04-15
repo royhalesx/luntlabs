@@ -67,7 +67,8 @@ private string[] allValues = {"value", "worst", "thresh",  "raw_value"
 
     public async void PrintTest(int amount, string path)//This prints all the factored data out and factors it into the output file
     {
-           
+          System.IO.Directory.CreateDirectory(path);
+
         using (StreamWriter ofp = new StreamWriter(path+ tests.Last().GetName() + "_output.txt")) //names the output file the name of the main folder_output.txt
         {
             tests.Last().refactor(amount); //Tells the data file to factor all the data points into something more manageable
@@ -85,9 +86,11 @@ private string[] allValues = {"value", "worst", "thresh",  "raw_value"
                
             }
             ofp.WriteLine("Drive Health" + tests.Last().getPercentage());
-
+            Console.WriteLine("Saved " + tests.Last().GetName() + " to " + Path.GetFullPath(tests.Last().GetName() + "_output.txt"));
         }
         
+        
+       
     }
 
     public void ReadFile(string file)

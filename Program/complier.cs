@@ -90,12 +90,11 @@ public void run(string name, string path){
 
 try{ //The try makes sure the file exists in an easier way
     
-Console.WriteLine(path+version+convals[1] + ".json");
  par.ReadFile(path + version + convals[1] + ".json");
  par.ReadFile(path + version + convals[2] + ".json");
 
 
- Console.WriteLine("Done with test "+  name);//A progress bar of sorts telling you how long it will take
+ 
 }
 catch(Exception e){ //if it fails it reports what folder it couldn't open
     Console.WriteLine("Cannot open file for test " + name);
@@ -122,7 +121,6 @@ public void sameDrive(int total){
     par.NewTest(names[0]);
 for(int i = 0; i < total; i++){
         run(names[i], paths[i]);
-        Console.WriteLine("Done with Test " + i);
 
     }
 
